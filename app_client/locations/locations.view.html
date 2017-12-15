@@ -1,70 +1,39 @@
-<!DOCTYPE html>
-<html>
+<div id="wrapper" ng-class="vm.toggle ? 'toggled' : ''">
 
-<head>
+    <sidebar></sidebar>
 
-    <title>Place details</title>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>{{vm.content}}</h1>
+                        <form novalidate>
+                            <div class="form-group">
+                                <label for="selectLocation">Location</label>
+                                <select id="selectLocation" 
+                                        class="form-control" 
+                                        ng-model="vm.selectedLocation" 
+                                        ng-options="apt.locationName for apt in vm.locations"></select>
+                                <p class="bg-info" ng-bind="vm.selectedLocation.locationName"></p>
+                            </div>
+                        </form>
+                    
+                    <!--<a href="#menu-toggle" class="btn btn-default" id="menu-toggle" ng-click="toggleMenu">Toggle Menu</a>-->
+                    <button type="button" 
+                            class="btn btn-default btn-link" 
+                            id="menu-toggle" 
+                            ng-model="vm.toggle" 
+                            ng-click="vm.toggle=!vm.toggle">Toggle Menu</button>
+                    <button type="button" 
+                            class="btn btn-default" 
+                            id="clear-selected-data" 
+                            ng-click="vm.clearSelectedData()">Clear Selected</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-        /* Always set the map height explicitly to define the size of the div element that contains the map. */
-
-        #map {
-            height: 100%;
-        }
-
-        /* Optional: Makes the sample page fill the window. */
-
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-
-    <script>
-        // This example requires the Places library. Include the libraries=places
-        // parameter when you first load the API. For example:
-        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: -33.866,
-                    lng: 151.196
-                },
-                    zoom: 15
-            });
-
-            var infowindow = new google.maps.InfoWindow();
-            var service = new google.maps.places.PlacesService(map);
-
-            service.getDetails({
-                placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
-            }, function(place, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: place.geometry.location
-                    });
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + 'Place ID: ' + place.place_id + '<br>' + place.formatted_address + '</div>');
-                        infowindow.open(map, this);
-                    });
-                }
-            });
-        }
-    </script>
-    </head>
-
-<body>
-
-    <div id="map"></div>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap">
-    </script>
-    </body>
-
-</html>
+</div>
+<!-- /#wrapper -->
