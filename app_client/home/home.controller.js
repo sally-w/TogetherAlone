@@ -4,7 +4,7 @@
     .module('TogetherAlone')
     .controller('homeCtrl', homeCtrl);
 
-  homeCtrl.$inject = ['$scope', `SelectedData`];
+  homeCtrl.$inject = ['$scope', 'SelectedData'];
 
   function homeCtrl($scope, SelectedData) {
     var vm = this;

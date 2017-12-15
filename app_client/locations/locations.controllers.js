@@ -11,6 +11,11 @@
     
     var vm = this;
     vm.content = "Locations Data";
+    vm.selectedLocation = " ";
+    
+    if(SelectedData.selectedLocation !== null){
+      vm.selectedLocation = SelectedData.selectedLocation;
+    }
     
     //refactored for Angular 1.6 - removed success/error, used Promises...
     vm.getlocationsData = function() {
