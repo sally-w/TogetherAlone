@@ -18,7 +18,7 @@ router.get('/landingdata/:flaps/:weight', ctrlAirplaneData.landingDataReadOne);
 router.get('/landingdata', ctrlAirplaneData.landingDataReadAll);*/
 
 // LOCATION DATA
-router.get('/locationsdata', ctrlLocationsData.airportDataReadAll);
+router.get('/locationsdata', ctrlLocationsData.locationsDataReadAll);
 
 // API KEYS
 router.get('/googleurl/:placeId', ctrlGoogleApi.getLocationsData);

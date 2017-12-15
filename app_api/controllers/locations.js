@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var LocationsData = mongoose.model('locationsData');
+var LocationsData = mongoose.model('LocationsData');
 
 //utility method for the module
 var sendJSONresponse = function(res, status, content)
